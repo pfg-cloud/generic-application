@@ -30,10 +30,8 @@ First we need to set up the MariaDB docker container to support our application.
 
 ---
 
-docker run --name mariadb_pfg -e MYSQL_ROOT_PASSWORD=pass -d mariadb/server:10.3
+docker run --name mariadb_pfg -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass -d mariadb/server:10.3
 
 ---
-
-And then use the IP 172.17.0.2 to connect.
 
 
