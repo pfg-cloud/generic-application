@@ -3,10 +3,10 @@ Spring:
   datasource:
     #    url: jdbc:h2:mem:testdb
     #    driverClassName: org.h2.Driver
-    url: jdbc:mariadb://172.17.0.2:3306/generic
+    url: jdbc:mariadb://localhost:3306/generic
 
     username: root
-    password: 110895
+    password: pass
     driverClassName: org.mariadb.jdbc.Driver
     testWhileIdle: true
     valiadtionQuery: SELECT 1
@@ -20,4 +20,4 @@ Spring:
   flyway:
     enabled: true
     user: root
-    password: 110895
+    password: pass
