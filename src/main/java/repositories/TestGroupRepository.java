@@ -1,12 +1,9 @@
 package repositories;
 
-import model.entity.User;
+import model.entity.TestGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-
-    User findUserById(final Long id);
-
+public interface TestGroupRepository extends JpaRepository<TestGroup, Long> {
 }

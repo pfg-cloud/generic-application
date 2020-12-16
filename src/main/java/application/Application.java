@@ -8,12 +8,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"controllers","services","config"})
+@ComponentScan(basePackages = {"controllers", "service", "config", "usecases"})
 @EnableJpaRepositories(basePackages = {"repositories"})
-@EntityScan(basePackages = {"model"})
+@EntityScan(basePackages = {"model.entity"})
 @EnableSwagger2
 public class Application {
-    public static void main(String[] args){
-        SpringApplication.run(Application.class,args);
+
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
     }
 }
