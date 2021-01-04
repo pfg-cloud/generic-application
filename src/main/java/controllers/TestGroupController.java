@@ -24,7 +24,7 @@ public class TestGroupController extends BaseController {
 
     @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Void> createTestGroup(@RequestBody final CreateTestRequest request) {
-
-        return success(null);
+        testGroupService.createTest(request);
+        return success();
     }
 }

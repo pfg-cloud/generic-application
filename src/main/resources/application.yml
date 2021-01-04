@@ -20,11 +20,9 @@ Spring:
     user: root
     password: pass
 
-  cache:
-    type: redis
-  redis:
-    host: localhost
-    port: 6379
+metrics:
+  testGroupId: ${TEST_GROUP_ID}
+  provider: ${PROVIDER}
 
 management:
   endpoints:

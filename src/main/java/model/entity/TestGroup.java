@@ -17,6 +17,9 @@ public class TestGroup {
     @Column(name = "group_uuid")
     private String groupUuid;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "status")
     @Convert(converter = Status.Converter.class)
     private Status status;
