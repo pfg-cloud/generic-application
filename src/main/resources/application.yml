@@ -6,7 +6,7 @@ Spring:
 
     username: clientuser
     password: dummypassword
-    driverClassName: org.mysql.jdbc.Driver
+#    driverClassName: org.mysql.jdbc.Driver
 
     testWhileIdle: true
     validationQuery: SELECT 1
