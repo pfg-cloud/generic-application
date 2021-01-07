@@ -7,10 +7,10 @@ Spring:
 
     #    username: clientuser
     #    password: dummypassword
-    url: jdbc:mysql://container_db:3306/generic?createDatabaseIfNotExist=true
+    url: jdbc:mysql://pfg-db.czpqvvygcatw.us-east-1.rds.amazonaws.com:3306/generic?createDatabaseIfNotExist=true
 
-    username: root
-    password: pass
+    username: admin
+    password: password
     #    driverClassName: org.mysql.jdbc.Driver
 
     testWhileIdle: true
@@ -26,8 +26,8 @@ Spring:
     enabled: true
     #    user: clientuser
     #    password: dummypassword
-    user: root
-    password: pass
+    user: admin
+    password: password
 
 metrics:
   testGroupId: ${TEST_GROUP_ID}
