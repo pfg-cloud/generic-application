@@ -7,7 +7,7 @@ Spring:
 
     #    username: clientuser
     #    password: dummypassword
-    url: jdbc:mysql://pfg-db.czpqvvygcatw.us-east-1.rds.amazonaws.com:3306/generic?createDatabaseIfNotExist=true
+    url: jdbc:mysql://${DB_HOST}:3306/generic?createDatabaseIfNotExist=true
 
     username: admin
     password: password
