@@ -1,5 +1,5 @@
-FROM alpine:edge
-MAINTAINER baeldung.com
-RUN apk add --no-cache openjdk8
-COPY files/UnlimitedJCEPolicyJDK8/* \
-  /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/
+FROM openjdk:8-jdk-alpine
+EXPOSE 8080
+ARG JAR_FILE=target/generic-application-1.0.0.jar
+ADD ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
