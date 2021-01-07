@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.UseCaseService;
 
+import java.io.IOException;
+
 @Slf4j
 @RestController
 @RequestMapping("/use-case")
@@ -36,6 +38,12 @@ public class UseCasesController extends BaseController {
         useCaseService.simulateHighCPULoad(request.getDuration(), request.getLoadPercentage(),
                 request.getNumberOfCores(), request.getNumberOfThreadsPerCore());
 
+        return success();
+    }
+
+    @PostMapping(value = "/load-request", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Void> simulateLoadRequest() throws IOException {
+        useCaseService.simulateRequestLoad();
         return success();
     }
 

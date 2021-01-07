@@ -2,10 +2,14 @@ server:
   port: 5000
 Spring:
   datasource:
-    url: jdbc:mysql://my-terraform-db.csppouatajr0.us-east-1.rds.amazonaws.com:3306/generic?createDatabaseIfNotExist=true
+#    url: jdbc:mysql://my-terraform-db.csppouatajr0.us-east-1.rds.amazonaws.com:3306/generic?createDatabaseIfNotExist=true
 
-    username: clientuser
-    password: dummypassword
+#    username: clientuser
+#    password: dummypassword
+    url: jdbc:mysql://localhost:3306/generic?createDatabaseIfNotExist=true
+
+    username: root
+    password: pass
 #    driverClassName: org.mysql.jdbc.Driver
 
     testWhileIdle: true
@@ -19,8 +23,10 @@ Spring:
 
   flyway:
     enabled: true
-    user: clientuser
-    password: dummypassword
+#    user: clientuser
+#    password: dummypassword
+    user: root
+    password: pass
 
 metrics:
   testGroupId: ${TEST_GROUP_ID}
