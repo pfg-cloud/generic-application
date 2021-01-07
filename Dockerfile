@@ -11,4 +11,4 @@ WORKDIR /app
 
 COPY --from=MAVEN_BUILD /build/target/Generic-Application-1.0-SNAPSHOT.jar /app/
 
-ENTRYPOINT ["java", "-jar", "Generic-Application-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=container", "-jar", "Generic-Application-1.0-SNAPSHOT.jar"]
