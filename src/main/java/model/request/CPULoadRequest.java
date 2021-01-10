@@ -6,7 +6,7 @@ import lombok.Data;
 public class CPULoadRequest {
 
     private long duration;
-    private double loadPercentage;
+    private int loadPercentage;
     private int numberOfCores;
     private int numberOfThreadsPerCore;
 
