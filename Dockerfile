@@ -1,11 +1,11 @@
-FROM maven:3.5.2-jdk-14-alpine AS MAVEN_BUILD
+FROM maven:3.6.3-openjdk-15 AS MAVEN_BUILD
 COPY pom.xml /build/
 COPY src /build/src/
 
 WORKDIR /build/
 RUN mvn package
 
-FROM openjdk:14-jre-alpine
+FROM openjdk:14.0.2-jdk-oraclelinux8
 
 WORKDIR /app
 
