@@ -1,5 +1,7 @@
 package configuration;
 
+import io.github.mweirauch.micrometer.jvm.extras.ProcessMemoryMetrics;
+import io.github.mweirauch.micrometer.jvm.extras.ProcessThreadMetrics;
 import io.micrometer.core.instrument.Tag;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
 import lombok.Data;
@@ -26,6 +28,9 @@ public class MetricsConfiguration implements MeterRegistryCustomizer<PrometheusM
     @Autowired
     public MetricsConfiguration(final PrometheusMeterRegistry prometheusMeterRegistry) {
         this.prometheusMeterRegistry = prometheusMeterRegistry;
+
+        new ProcessMemoryMetrics().bindTo(this.prometheusMeterRegistry);
+        new ProcessThreadMetrics().bindTo(this.prometheusMeterRegistry);
     }
 
     private final PrometheusMeterRegistry prometheusMeterRegistry;

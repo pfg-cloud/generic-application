@@ -2,32 +2,32 @@ server:
   port: 5000
 Spring:
   profiles: container
-  datasource:
-    #    url: jdbc:mysql://my-terraform-db.csppouatajr0.us-east-1.rds.amazonaws.com:3306/generic?createDatabaseIfNotExist=true
+#  datasource:
+#    #    url: jdbc:mysql://my-terraform-db.csppouatajr0.us-east-1.rds.amazonaws.com:3306/generic?createDatabaseIfNotExist=true
+#
+#    #    username: clientuser
+#    #    password: dummypassword
+#    url: jdbc:mysql://${DB_HOST}/generic?createDatabaseIfNotExist=true
+#
+#    username: admin
+#    password: password
+#    #    driverClassName: org.mysql.jdbc.Driver
+#
+#    testWhileIdle: true
+#    validationQuery: SELECT 1
+#  jpa:
+#    #    database-platform: org.hibernate.dialect.H2Dialect
+#    show_sql: true
+#    hibernate:
+#      ddl-auto: update
+#      dialect: MySQL8Dialect
 
-    #    username: clientuser
-    #    password: dummypassword
-    url: jdbc:mysql://${DB_HOST}/generic?createDatabaseIfNotExist=true
-
-    username: admin
-    password: password
-    #    driverClassName: org.mysql.jdbc.Driver
-
-    testWhileIdle: true
-    validationQuery: SELECT 1
-  jpa:
-    #    database-platform: org.hibernate.dialect.H2Dialect
-    show_sql: true
-    hibernate:
-      ddl-auto: update
-      dialect: MySQL8Dialect
-
-  flyway:
-    enabled: true
-    #    user: clientuser
-    #    password: dummypassword
-    user: admin
-    password: password
+#  flyway:
+#    enabled: true
+#    #    user: clientuser
+#    #    password: dummypassword
+#    user: admin
+#    password: password
 
 metrics:
   testGroupId: ${TEST_GROUP_ID}

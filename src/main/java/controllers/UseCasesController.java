@@ -35,15 +35,20 @@ public class UseCasesController extends BaseController {
 
     @PostMapping(value = "/cpu-load", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Void> simulateCPULoad(final CPULoadRequest request) {
-        useCaseService.simulateHighCPULoad(request.getDuration(), request.getLoadPercentage(),
-                request.getNumberOfCores(), request.getNumberOfThreadsPerCore());
+        useCaseService.simulateHighCPULoad(request.getDuration(), request.getLoadPercentage());
 
         return success();
     }
 
     @PostMapping(value = "/load-request", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Void> simulateLoadRequest() throws IOException {
+    public ResponseEntity<Void> simulateLoadRequest() throws InterruptedException {
         useCaseService.simulateRequestLoad();
+        return success();
+    }
+
+    @PostMapping(value = "/read-dummy-file", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Void> simulateReadDummyFile() throws IOException {
+        useCaseService.simulateFileRead();
         return success();
     }
 

@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 public class FileReader {
 
-    public static String read(final String filePath) throws IOException {
+    public static byte[] read(final String filePath) throws IOException {
         final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
@@ -17,7 +17,6 @@ public class FileReader {
             return null;
         }
         IOUtils.copy(fileStream, byteArrayOutputStream);
-        return new String(byteArrayOutputStream.toByteArray());
+        return byteArrayOutputStream.toByteArray();
     }
-
 }
