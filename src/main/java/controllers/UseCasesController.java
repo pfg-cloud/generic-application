@@ -2,8 +2,6 @@ package controllers;
 
 import base.BaseController;
 import lombok.extern.slf4j.Slf4j;
-import model.request.CPULoadRequest;
-import model.request.HighMemoryUsageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,16 +24,9 @@ public class UseCasesController extends BaseController {
 
     private final UseCaseService useCaseService;
 
-    @PostMapping(value = "/high-memory-usage", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Void> simulateHighMemoryUsage(final HighMemoryUsageRequest request) throws InterruptedException {
-        useCaseService.simulateHighMemoryUsage(request.getMemoryInMegabytes(), request.getTimeOfExecutionInSeconds());
-
-        return success();
-    }
-
     @PostMapping(value = "/cpu-load", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Void> simulateCPULoad(final CPULoadRequest request) {
-        useCaseService.simulateHighCPULoad(request.getDuration(), request.getLoadPercentage());
+    public ResponseEntity<Void> simulateCPULoad() throws IOException {
+        useCaseService.simulateHighCPULoad();
 
         return success();
     }

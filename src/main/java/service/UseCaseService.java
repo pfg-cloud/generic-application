@@ -1,6 +1,6 @@
 package service;
 
-import com.martensigwart.fakeload.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import common.FileReader;
 import io.micrometer.core.instrument.Timer;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
@@ -8,13 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class UseCaseService {
 
     private static final String DUMMY_FILE_PATH = "file/read.txt";
+    private static final String LARGE_VECTOR_FILE_PATH = "file/vector.json";
 
     @Autowired
     public UseCaseService(final PrometheusMeterRegistry prometheusMeterRegistry) {
@@ -23,26 +26,14 @@ public class UseCaseService {
 
     private final PrometheusMeterRegistry prometheusMeterRegistry;
 
-    private FakeLoadExecutor getFakeLoadExecutor() {
-        return FakeLoadExecutors.newDefaultExecutor();
-    }
+    public void simulateHighCPULoad() throws IOException {
+        final byte[] vectorBytes = FileReader.read(LARGE_VECTOR_FILE_PATH);
 
-    private void executeLoad(final FakeLoad fakeLoad) {
-        getFakeLoadExecutor().execute(fakeLoad);
-    }
+        ObjectMapper objectMapper = new ObjectMapper();
+        final Integer[] vector = objectMapper.readValue(vectorBytes, Integer[].class);
+        final List<Integer> list = Arrays.asList(vector);
 
-    public void simulateHighMemoryUsage(final int memoryInMb, final int timeInSeconds) throws InterruptedException {
-        final FakeLoad fakeLoad = FakeLoads.create()
-                .lasting(timeInSeconds, TimeUnit.SECONDS)
-                .withMemory(memoryInMb, MemoryUnit.MB);
-        executeLoad(fakeLoad);
-    }
-
-    public void simulateHighCPULoad(final long duration, final int loadPercentage) {
-        final FakeLoad fakeLoad = FakeLoads.create()
-                .lasting(duration, TimeUnit.SECONDS)
-                .withCpu(loadPercentage);
-        executeLoad(fakeLoad);
+        list.sort(Integer::compareTo);
     }
 
     public void simulateRequestLoad() throws InterruptedException {
